@@ -1,0 +1,6 @@
+io/pivotal/cf/servicebroker/service/BindingServiceTest.class
+io/pivotal/cf/servicebroker/service/CatalogServiceTest.class
+io/pivotal/cf/servicebroker/service/InstanceServiceTest.class
+io/pivotal/cf/servicebroker/TestConfig.class
+io/pivotal/cf/servicebroker/service/BindingServiceTest$1.class
+io/pivotal/cf/servicebroker/service/InstanceServiceTest$1.class

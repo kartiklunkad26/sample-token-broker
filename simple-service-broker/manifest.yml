@@ -1,0 +1,12 @@
+---
+applications:
+- name: hello-service-broker-kl
+  memory: 512M
+  instances: 1
+  buildpack: java_buildpack
+  path: target/simple-service-broker-1.0.0.jar
+  services: [ hello-ds ]
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    GREETING: Hello
+    API_VERSION: 2.9
