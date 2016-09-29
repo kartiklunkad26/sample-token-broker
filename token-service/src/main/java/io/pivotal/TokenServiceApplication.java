@@ -17,7 +17,7 @@ public class TokenServiceApplication {
 	}
 	
 	@RequestMapping("v1/tokenservice")
-	public TokenService getTokenServiceInfo(){
-		return new TokenService(counter.incrementAndGet(),String.format("ABCDE123"));
+	public Token getTokenServiceInfo(){
+		return new Token(counter.incrementAndGet(),String.format("ABCDE123"));
 	}
 }
