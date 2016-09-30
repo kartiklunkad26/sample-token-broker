@@ -1,0 +1,17 @@
+---
+cf_cli/all_open.json:
+  object_id: 8d6d408f-a7a4-4588-8bd1-b9b1ef0f3321
+  sha: 5915785ed61178f2a4988de73517c1ef986146de
+  size: 80
+cf_cli/cf-linux-amd64.tgz:
+  object_id: aa270c19-5a4d-4bba-8147-3579e3f93368
+  sha: 44b44aacd6204e9ff762da21fcbcff91e13c7a44
+  size: 6393823
+simple_service_broker/manifest.yml:
+  object_id: 77998f4c-d98f-4408-970a-c1d3e3ecf6ee
+  sha: e8c0d91fb32ba7454fb440c7d58407c3fb6ea6b3
+  size: 42
+simple_service_broker/simple-service-broker-1.0.0.jar:
+  object_id: 7e5f89a3-cfe6-4315-a431-fc07398ea10e
+  sha: da62739d6e3e69677e2ef91cf973163119a03f4d
+  size: 18611652

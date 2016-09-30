@@ -1,0 +1,6 @@
+---
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/simple-service-broker-blobs
+final_name: simple-service-broker

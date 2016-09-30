@@ -1,0 +1,8 @@
+---
+name: simple_service_broker
+
+dependencies: []
+
+files:
+- simple_service_broker/simple-service-broker-1.0.0.jar
+- simple_service_broker/manifest.yml
