@@ -1,0 +1,5 @@
+---
+applications: 
+  - name: token-service
+    path: target/token-service-0.0.1-SNAPSHOT.jar
+    buildpack: https://github.com/cloudfoundry/java-buildpack.git#v3.7 

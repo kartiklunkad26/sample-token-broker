@@ -2,6 +2,9 @@ package io.pivotal.cf.servicebroker.service;
 
 import io.pivotal.cf.servicebroker.model.ServiceInstance;
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.servicebroker.exception.ServiceBrokerException;
 import org.springframework.cloud.servicebroker.exception.ServiceDefinitionDoesNotExistException;
@@ -18,6 +21,7 @@ import javax.annotation.Resource;
 class InstanceService implements org.springframework.cloud.servicebroker.service.ServiceInstanceService {
 
     private static final String OBJECT_ID = "Instance";
+    private final Logger log = LoggerFactory.getLogger(InstanceService.class);
 
     @Autowired
     private CatalogService catalogService;

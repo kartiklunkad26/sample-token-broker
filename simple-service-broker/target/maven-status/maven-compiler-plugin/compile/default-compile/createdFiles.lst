@@ -1,9 +1,14 @@
+io/pivotal/cf/servicebroker/broker/SSLCertificateValidation$NullX509TrustManager.class
 io/pivotal/cf/servicebroker/Config.class
-io/pivotal/cf/servicebroker/broker/HelloService.class
+io/pivotal/cf/servicebroker/broker/SSLCertificateValidation$1.class
 io/pivotal/cf/servicebroker/model/ServiceBinding.class
 io/pivotal/cf/servicebroker/service/BrokeredService.class
+io/pivotal/cf/servicebroker/model/TokenCredentials.class
 io/pivotal/cf/servicebroker/Application.class
+io/pivotal/cf/servicebroker/broker/SSLCertificateValidation$NullHostnameVerifier.class
+io/pivotal/cf/servicebroker/broker/SSLCertificateValidation.class
 io/pivotal/cf/servicebroker/model/ServiceInstance.class
+io/pivotal/cf/servicebroker/broker/TokenService.class
 io/pivotal/cf/servicebroker/service/BindingService.class
 io/pivotal/cf/servicebroker/service/CatalogService.class
 io/pivotal/cf/servicebroker/service/DefaultServiceImpl.class

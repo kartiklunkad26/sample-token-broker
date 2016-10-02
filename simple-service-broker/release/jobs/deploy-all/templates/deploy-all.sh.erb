@@ -37,7 +37,8 @@ function import_opsmgr_variables() {
 	export APPLY_OPEN_SECURITY_GROUP=<%= Shellwords.escape properties.apply_open_security_group %>
 	export ALLOW_PAID_SERVICE_PLANS=<%= Shellwords.escape Shellwords.escape properties.allow_paid_service_plans %>
 
-	export GREETING=<%= Shellwords.escape properties.greeting  %>
+	export TOKEN_ADMIN=<%= Shellwords.escape properties.token_admin  %>
+	export TOKEN_ADMIN_PASS=<%= Shellwords.escape properties.token_admin_pass  %>
 	export API_VERSION=<%= Shellwords.escape properties.api_version  %>
 }
 
@@ -59,7 +60,7 @@ function authenticate() {
 
 function setup_target_org() {
 	if [ -z "$CF_ORG" ]; then
-		CF_ORG=simple-service-broker-org
+		CF_ORG=token-service-broker-org
 	fi
 	if ! $CF org $CF_ORG >/dev/null; then
 		cf create-org $CF_ORG
@@ -85,7 +86,7 @@ function setup_org_quota() {
 
 function setup_target_space() {
 	if [ -z "$CF_SPACE" ]; then
-		CF_SPACE=simple-service-broker-space
+		CF_SPACE=token-service-broker-space
 	fi
 	if ! $CF space $CF_SPACE >/dev/null; then
 		cf create-space $CF_SPACE
@@ -140,7 +141,8 @@ function add_env_vars() {
     # Custom Service Plans
 
 	# Custom variables from tile.yml
-	cf set-env $1 GREETING "$GREETING"
+	cf set-env $1 TOKEN_ADMIN "$TOKEN_ADMIN"
+	cf set-env $1 TOKEN_ADMIN_PASS "$TOKEN_ADMIN_PASS"
 	cf set-env $1 API_VERSION "$API_VERSION"
 
 	# Addresses of bosh vms
@@ -291,12 +293,12 @@ add_target_org_to_admin
 setup_package_path
 apply_open_security_group "$APPLY_OPEN_SECURITY_GROUP"
 
-# Deploy package simple_service_broker
+# Deploy package token_service_broker
 #
 
-export PKG_NAME=simple_service_broker
-export APP_NAME=simple-service-broker-0.0.9
-export APP_HOST=simple-service-broker
+export PKG_NAME=token_service_broker
+export APP_NAME=token-service-broker-0.0.13
+export APP_HOST=token-service-broker
 export DOCKER_IMAGE=""
 export NEEDS_CF_CREDS=""
 export HEALTH_CHECK=""
@@ -304,17 +306,17 @@ deploy_app "$PKG_NAME" "$APP_NAME" "$APP_HOST" "$DOCKER_IMAGE" "$NEEDS_CF_CREDS"
 export SVC_NAME="p-redis"
 export SVC_PLAN=""
 provision_auto_service "$PKG_NAME" "$APP_NAME" "$SVC_NAME" "$SVC_PLAN"
-export SVC_NAME=<%= Shellwords.escape properties.simple_service_broker.persistence_store_type %>
+export SVC_NAME=<%= Shellwords.escape properties.token_service_broker.persistence_store_type %>
 export SVC_PLAN=""
 provision_auto_service "$PKG_NAME" "$APP_NAME" "$SVC_NAME" "$SVC_PLAN"
-start_app simple-service-broker "$APP_NAME"
+start_app token-service-broker "$APP_NAME"
 
-export BROKER_NAME=simple-service-broker
-export BROKER_USER=<%= Shellwords.escape properties.simple_service_broker.user %>
-export BROKER_PASS=<%= Shellwords.escape properties.simple_service_broker.password %>
+export BROKER_NAME=token-service-broker
+export BROKER_USER=<%= Shellwords.escape properties.token_service_broker.user %>
+export BROKER_PASS=<%= Shellwords.escape properties.token_service_broker.password %>
 export BROKER_SERVICES=""
 export BROKER_URL=$SCHEME://${APP_HOST}.${APP_DOMAIN}
-export GLOBAL_ACCESS=<%= Shellwords.escape properties.simple_service_broker.enable_global_access_to_plans %>
+export GLOBAL_ACCESS=<%= Shellwords.escape properties.token_service_broker.enable_global_access_to_plans %>
 register_broker "$BROKER_NAME" "$BROKER_USER" "$BROKER_PASS" "$BROKER_URL" "$GLOBAL_ACCESS" "$BROKER_SERVICES"
 
 

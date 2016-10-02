@@ -1,0 +1,8 @@
+---
+name: token_service_broker
+
+dependencies: []
+
+files:
+- token_service_broker/token-service-broker-1.0.0.jar
+- token_service_broker/manifest.yml

@@ -2,5 +2,5 @@
 blobstore:
   provider: local
   options:
-    blobstore_path: /tmp/simple-service-broker-blobs
-final_name: simple-service-broker
+    blobstore_path: /tmp/token-service-broker-blobs
+final_name: token-service-broker

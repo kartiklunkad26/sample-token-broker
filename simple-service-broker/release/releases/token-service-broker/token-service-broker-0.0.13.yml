@@ -1,0 +1,30 @@
+---
+packages:
+- name: cf_cli
+  version: ac0add6259d19deeaa4fe0f5dc05ab285982f1a8
+  fingerprint: ac0add6259d19deeaa4fe0f5dc05ab285982f1a8
+  sha1: 96c73967aedf625289300d7f19d6d5cdcd3b980d
+  dependencies: []
+- name: common
+  version: d83e9d13dc21a50d19a829232582496637f02eca
+  fingerprint: d83e9d13dc21a50d19a829232582496637f02eca
+  sha1: 02f858bb207ac70983793b1d9fa77363405c6390
+  dependencies: []
+- name: token_service_broker
+  version: 69ef75109791825f7c7d752f9574d4100c43dd98
+  fingerprint: 69ef75109791825f7c7d752f9574d4100c43dd98
+  sha1: c1658edafb89f0e539e27d10f12289f40d00ee45
+  dependencies: []
+jobs:
+- name: delete-all
+  version: 35918efda47395e8eb63a4cc94810fefecf48709
+  fingerprint: 35918efda47395e8eb63a4cc94810fefecf48709
+  sha1: d0c46cf5186f1a70e62bf1c3b50c8ecc53fd86da
+- name: deploy-all
+  version: 0412cdc6861025256116caa991bcbb47d4225ac0
+  fingerprint: 0412cdc6861025256116caa991bcbb47d4225ac0
+  sha1: 45a26fc9f9ff4fbaf3f1bddaf306564f596847d6
+commit_hash: 790edf98
+uncommitted_changes: true
+name: token-service-broker
+version: 0.0.13

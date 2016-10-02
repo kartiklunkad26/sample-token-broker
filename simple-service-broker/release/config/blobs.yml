@@ -1,17 +1,17 @@
 ---
 cf_cli/all_open.json:
-  object_id: 8d6d408f-a7a4-4588-8bd1-b9b1ef0f3321
+  object_id: aca43e17-f51d-4b0e-9254-20beeed132e3
   sha: 5915785ed61178f2a4988de73517c1ef986146de
   size: 80
 cf_cli/cf-linux-amd64.tgz:
-  object_id: aa270c19-5a4d-4bba-8147-3579e3f93368
+  object_id: ebc06e25-7e50-49cf-930d-003b953c9566
   sha: 44b44aacd6204e9ff762da21fcbcff91e13c7a44
   size: 6393823
-simple_service_broker/manifest.yml:
-  object_id: 77998f4c-d98f-4408-970a-c1d3e3ecf6ee
-  sha: e8c0d91fb32ba7454fb440c7d58407c3fb6ea6b3
-  size: 42
-simple_service_broker/simple-service-broker-1.0.0.jar:
-  object_id: 7e5f89a3-cfe6-4315-a431-fc07398ea10e
-  sha: da62739d6e3e69677e2ef91cf973163119a03f4d
-  size: 18611652
+token_service_broker/manifest.yml:
+  object_id: e4307313-99b8-407a-b9bb-3b3479f546ac
+  sha: d45d28a182a48ee90b7e88cd60db732deaf0527d
+  size: 41
+token_service_broker/token-service-broker-1.0.0.jar:
+  object_id: 34cbca5e-afbb-407f-a11c-d9f3edd1b1ad
+  sha: fcc011f095937b5201c1ad756392dc01f12a3542
+  size: 18611445

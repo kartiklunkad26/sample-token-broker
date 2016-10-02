@@ -1,0 +1,276 @@
+---
+name: token-service-broker
+label: Token Broker
+description: A simple token service broker to serve token number.
+icon_image: iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAABHVBMVEUCeG0DeW4Fem8Ie3AJfHEKfHIMfXMOfnQRgHYUgncXg3kchnwfh34kioAli4Emi4InjIIpjYMqjYQvkIcwkIcykYg2lIs7lo5BmZFBmpJNoJlPoZpTo5xUpJ1WpZ5Zp59bqKFcqKFdqaJgqqNhq6RjrKVnrqdpr6lrsKpxs610ta93trF7ubN+urWBvLaCvLeDvbeEvbiJwLuKwbuLwbyQxL+Xx8OYyMOZyMSey8egzMihzcmjzsqkzsqn0Myq0c6t08+y1tK22NW42dbA3tvD393E4N3H4d/J4uDK4+HL4+HQ5uTR5+XU6ObW6ejd7ezg7+3l8fDo8/Lp8/Lv9/by+Pjz+fj0+fn2+vr3+/r5/Pz6/Pz8/f3+/v7///80UrDvAAABQElEQVR42u3VyU4CQQCE4R4UFVFURlDEnUHFfV9xXxEXFDccmfd/DL1MSUhMPDg1ianv2HX4k046bURERERERETk91JnzU4Pt5acwQ4TsIz3g/udsXZyGN4O0uwwnPSSw+AWLHIYihFyGPYtchjmgg0/lL/cVirV9+aw2xdouICzaHd24bqxfEwIQ2LXg3qCEYYRF9syJQwOthInDJe46yg3nMfYzw33YMxywxGMk5wwvPjjFDlc88cZbrgNo8MNJzEOccPTGG1u+Ar/Uys1PIrtwjDD9hO2eWZ4/BnTR5wWjuVK3reiCT6cX19c2z66q3sNXrsI4T0PwDHhhFdNOOEVK5RwddgAMVzbiJkQwjeznQZI4cfzzRweESWczAyk7HgLdlIYFFZYYYUVVlhhhRX+Q+myb8KIiIiIiIiI/DOf9i2D8qi36EAAAAAASUVORK5CYII=
+product_version: '0.0.13'
+metadata_version: '1.5'
+minimum_version_for_upgrade: '0.0.1'
+rank: 1
+serial: true
+
+releases:
+- file: token-service-broker-0.0.13.tgz
+  name: token-service-broker
+  version: '0.0.13'
+
+stemcell_criteria:
+  os: ubuntu-trusty
+  requires_cpi: false
+  version: '3263'
+
+property_blueprints:
+#
+# Parameters for the entire product
+#
+- name: org
+  type: string
+  configurable: true
+  default: token-service-broker-org
+- name: org_quota
+  type: integer
+  configurable: true
+  default: 2048
+- name: space
+  type: string
+  configurable: true
+  default: token-service-broker-space
+- name: apply_open_security_group
+  type: boolean
+  configurable: true
+  default: True
+- name: allow_paid_service_plans
+  type: boolean
+  configurable: true
+  default: False
+
+
+#
+# Standard properties for package token_service_broker
+#
+- name: token_service_broker_enable_global_access_to_plans
+  type: boolean
+  configurable: true
+  default: True
+#
+# Custom properties from the tile.yml file
+#
+- name: token_admin # Refer to this elsewhere as (( .properties.token_admin ))
+  type: string
+  configurable: true
+  optional: false
+- name: token_admin_pass # Refer to this elsewhere as (( .properties.token_admin_pass ))
+  type: string
+  configurable: true
+  optional: false
+- name: api_version # Refer to this elsewhere as (( .properties.api_version ))
+  type: string
+  default: 2.8
+  configurable: true
+  optional: false
+
+form_types:
+#
+# Custom form token_properties from the tile.yml file
+#
+- name: token_properties
+  label: TransArmor Properties
+  description: TransArmor Token Service properties
+  property_inputs:
+  - reference: .properties.token_admin
+    label: Token Admin
+    description: The Administrator user for token service
+  - reference: .properties.token_admin_pass
+    label: Token Admin Password
+    description: The Administrator password for token service
+  - reference: .properties.api_version
+    label: Broker API Version
+    description: Which service broker api this broker supports
+
+
+
+
+
+#
+# Service access form
+#
+- name: service_access
+  label: Service Access
+  description: Determine availability of services
+  property_inputs:
+  - reference: .properties.token_service_broker_enable_global_access_to_plans
+    label: Enable global access to plans of service token_service_broker
+    description: "Enable global access to plans in the marketplace"
+
+job_types:
+#
+# Default compilation job
+#
+- name: compilation
+  resource_label: compilation
+  resource_definitions:
+   - name: ram
+     type: integer
+     configurable: true
+     default: 4096
+   - name: ephemeral_disk
+     type: integer
+     configurable: true
+     default: 10240
+   - name: persistent_disk
+     type: integer
+     configurable: true
+     default: 0
+   - name: cpu
+     type: integer
+     configurable: true
+     default: 2
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  single_az_only: true
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: true
+    default: 1
+#
+# deploy-all job
+#
+- name: deploy-all
+  resource_label: deploy-all
+  errand: true
+  templates:
+  - name: deploy-all
+    release: token-service-broker
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 4096
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  single_az_only: false
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: false
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  - name: app_credentials
+    type: salted_credentials
+  manifest: |
+    domain: (( ..cf.cloud_controller.system_domain.value ))
+    app_domains:
+    - (( ..cf.cloud_controller.apps_domain.value ))
+    org: (( .properties.org.value ))
+    space: (( .properties.space.value ))
+    ssl:
+      skip_cert_verify: (( ..cf.ha_proxy.skip_cert_verify.value ))
+    cf:
+      admin_user: (( ..cf.uaa.system_services_credentials.identity ))
+      admin_password: (( ..cf.uaa.system_services_credentials.password ))
+    org_quota: (( .properties.org_quota.value ))
+    apply_open_security_group: (( .properties.apply_open_security_group.value ))
+    allow_paid_service_plans: (( .properties.allow_paid_service_plans.value ))
+    security:
+      user: (( .deploy-all.app_credentials.identity ))
+      password: (( .deploy-all.app_credentials.password ))
+    token_admin: (( .properties.token_admin.value ))
+    token_admin_pass: (( .properties.token_admin_pass.value ))
+    api_version: (( .properties.api_version.value ))
+    token_service_broker:
+      name: token_service_broker
+      user: (( .deploy-all.app_credentials.identity ))
+      password: (( .deploy-all.app_credentials.password ))
+      enable_global_access_to_plans: (( .properties.token_service_broker_enable_global_access_to_plans.value ))
+#
+# delete-all job
+#
+- name: delete-all
+  resource_label: delete-all
+  errand: true
+  templates:
+  - name: delete-all
+    release: token-service-broker
+  resource_definitions:
+  - name: ram
+    type: integer
+    configurable: false
+    default: 1024
+  - name: ephemeral_disk
+    type: integer
+    configurable: false
+    default: 4096
+  - name: persistent_disk
+    type: integer
+    configurable: false
+    default: 0
+  - name: cpu
+    type: integer
+    configurable: false
+    default: 1
+  static_ip: 0
+  dynamic_ip: 1
+  max_in_flight: 1
+  single_az_only: false
+  instance_definitions:
+  - name: instances
+    type: integer
+    configurable: false
+    default: 1
+  property_blueprints:
+  - name: vm_credentials
+    type: salted_credentials
+    default:
+      identity: vcap
+  - name: app_credentials
+    type: salted_credentials
+  manifest: |
+    domain: (( ..cf.cloud_controller.system_domain.value ))
+    app_domains:
+    - (( ..cf.cloud_controller.apps_domain.value ))
+    org: (( .properties.org.value ))
+    space: (( .properties.space.value ))
+    ssl:
+      skip_cert_verify: (( ..cf.ha_proxy.skip_cert_verify.value ))
+    cf:
+      admin_user: (( ..cf.uaa.system_services_credentials.identity ))
+      admin_password: (( ..cf.uaa.system_services_credentials.password ))
+
+post_deploy_errands:
+- name: deploy-all
+
+pre_delete_errands:
+- name: delete-all
+
+update:
+  canaries: 1
+  canary_watch_time: 10000-100000
+  max_in_flight: 1
+  update_watch_time: 10000-100000
+
+requires_product_versions:
+- name: cf
+  version: '~> 1.5'
+
+provides_product_versions:
+- name: token-service-broker
+  version: '0.0.13'

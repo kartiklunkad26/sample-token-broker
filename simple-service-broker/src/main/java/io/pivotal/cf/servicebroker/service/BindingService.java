@@ -3,6 +3,9 @@ package io.pivotal.cf.servicebroker.service;
 import io.pivotal.cf.servicebroker.model.ServiceBinding;
 import io.pivotal.cf.servicebroker.model.ServiceInstance;
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.servicebroker.exception.ServiceBrokerException;
 import org.springframework.cloud.servicebroker.exception.ServiceInstanceBindingDoesNotExistException;
@@ -22,6 +25,7 @@ import java.util.Map;
 public class BindingService implements ServiceInstanceBindingService {
 
     public static final String OBJECT_ID = "binding";
+    private final Logger log = LoggerFactory.getLogger(BindingService.class);
 
     @Autowired
     private InstanceService instanceService;

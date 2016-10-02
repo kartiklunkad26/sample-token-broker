@@ -4,7 +4,7 @@ templates:
   delete-all.sh.erb: bin/run
 packages:
 - cf_cli
-- simple_service_broker
+- token_service_broker
 properties:
   domain:
     description: 'CloudFoundry system domain'

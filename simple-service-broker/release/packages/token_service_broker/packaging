@@ -1,0 +1,5 @@
+# abort script on any command that exit with a non zero value
+set -e
+
+cp token_service_broker/token-service-broker-1.0.0.jar ${BOSH_INSTALL_TARGET}
+cp token_service_broker/manifest.yml ${BOSH_INSTALL_TARGET}

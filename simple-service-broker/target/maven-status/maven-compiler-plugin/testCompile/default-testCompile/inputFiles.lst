@@ -1,4 +1,4 @@
-/Users/kartiklunkad/Documents/servicebroker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/InstanceServiceTest.java
-/Users/kartiklunkad/Documents/servicebroker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/CatalogServiceTest.java
-/Users/kartiklunkad/Documents/servicebroker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/TestConfig.java
-/Users/kartiklunkad/Documents/servicebroker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/BindingServiceTest.java
+/Users/kartiklunkad/Documents/servicebroker/sample-token-broker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/BindingServiceTest.java
+/Users/kartiklunkad/Documents/servicebroker/sample-token-broker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/InstanceServiceTest.java
+/Users/kartiklunkad/Documents/servicebroker/sample-token-broker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/TestConfig.java
+/Users/kartiklunkad/Documents/servicebroker/sample-token-broker/simple-service-broker/src/test/java/io/pivotal/cf/servicebroker/service/CatalogServiceTest.java

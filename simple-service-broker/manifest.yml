@@ -1,12 +1,13 @@
 ---
 applications:
-- name: hello-service-broker-kl
+- name: token-service-broker-kl
   memory: 512M
   instances: 1
-  buildpack: java_buildpack
-  path: target/simple-service-broker-1.0.0.jar
-  services: [ hello-ds ]
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git#v3.7
+  path: target/token-service-broker-1.0.0.jar
+  services: [ token-redis ]
   env:
     SPRING_PROFILES_ACTIVE: cloud
     GREETING: Hello
-    API_VERSION: 2.9
+    API_VERSION: 2.8
+    SERVICE_URL: https://token-service.cfapps.haas-63.pez.pivotal.io

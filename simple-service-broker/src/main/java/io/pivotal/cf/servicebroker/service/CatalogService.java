@@ -2,6 +2,9 @@ package io.pivotal.cf.servicebroker.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.servicebroker.exception.ServiceBrokerException;
 import org.springframework.cloud.servicebroker.model.Catalog;
 import org.springframework.cloud.servicebroker.model.ServiceDefinition;
@@ -18,7 +21,7 @@ import java.nio.file.Paths;
 public class CatalogService implements org.springframework.cloud.servicebroker.service.CatalogService {
 
     private Catalog catalog;
-
+    private final Logger log = LoggerFactory.getLogger(CatalogService.class);
     @Override
     public Catalog getCatalog() {
         if (catalog != null) {

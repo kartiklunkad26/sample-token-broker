@@ -24,6 +24,8 @@ public class TestConfig {
     public static final String APP_GUID = "anAppGuid";
     public static final String ORG_GUID = "anOrgGuid";
     public static final String SPACE_GUID = "aSpaceGuid";
+    public static final String GREETING = "Hello";
+    public static final String SERVICE_URL = "https://test-app.cfapps.io";
 
     @Autowired
     private CatalogService catalogService;

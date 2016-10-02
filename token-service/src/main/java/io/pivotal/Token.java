@@ -1,34 +1,51 @@
 package io.pivotal;
 
 public class Token {
-	private Long token;
-	private String pan;
+	
+	private Integer id;
+	private String user;
+	private String password;
 	
 	public Token() {
 	}
 	
 
-	public Token(Long token, String pan) {
-		this.token = token;
-		this.pan = pan;
+	public Token(Integer id) {
+		this.id = id;
+		//Need to generate these user and password
+		this.user	 = "abc";
+		this.password = "bcdefgh";
 	}
 
 
-	public Long getToken() {
-		return token;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setToken(Long token) {
-		this.token = token;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getPan() {
-		return pan;
+
+	public String getUser() {
+		return user;
 	}
 
-	public void setPan(String pan) {
-		this.pan = pan;
+
+	public void setUser(String user) {
+		this.user = user;
 	}
-	
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 
 }
