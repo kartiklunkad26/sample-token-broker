@@ -1,7 +1,12 @@
 package io.pivotal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Token {
 	
+	@Id
 	private Integer id;
 	private String user;
 	private String password;
@@ -12,9 +17,9 @@ public class Token {
 
 	public Token(Integer id) {
 		this.id = id;
-		//Need to generate these user and password
-		this.user	 = "abc";
-		this.password = "bcdefgh";
+		this.user	 = "user" + id.toString();
+		this.password = "keepitsimple";
+		
 	}
 
 

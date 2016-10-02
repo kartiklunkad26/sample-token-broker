@@ -12,11 +12,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.servicebroker.exception.ServiceBrokerException;
 import org.springframework.core.env.Environment;
+import org.springframework.security.core.token.SecureRandomFactoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Example service broker. Can be used as a template for creating custom service brokers
@@ -106,7 +108,9 @@ public class TokenService extends DefaultServiceImpl {
         
         if(serviceurl() != null)
         { 
-        	String requestURL = serviceurl() + "/v1/tokenservice" + "/12345";
+        	Random random = new Random();
+        	Integer id = random.nextInt(100);
+        	String requestURL = serviceurl() + "/v1/tokenservice/" + id.toString();
         	
         	RestTemplate restTemplate = new RestTemplate();
             

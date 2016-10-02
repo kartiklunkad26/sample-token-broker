@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/tokenservice")
 public class TokenServiceApplication {
 
+	TokenRepository tokenrepo;
 	public static void main(String[] args) {
 		SpringApplication.run(TokenServiceApplication.class, args);
 	}
@@ -21,6 +22,8 @@ public class TokenServiceApplication {
 	@RequestMapping(produces="application/json", value="/{id}", method=RequestMethod.GET)
 	public Token getTokenServiceInfo(@PathVariable("id") String id){
 		Integer tokenid = Integer.decode(id);
-		return new Token(tokenid);
+		Token token = new Token(tokenid);
+		tokenrepo.save(token);
+		return token;
 	}
 }
